@@ -1,0 +1,251 @@
+---
+title: Introduction
+---
+
+# Introduction
+
+The Pdfless API simplifies the generation of transactional PDF documents, significantly reducing development and support costs. It empowers users to effortlessly create and manage their document templates using the robust capabilities of the web through HTML and CSS.
+
+The Pdfless API adopts a REST architecture, providing the flexibility to code in your preferred programming language. It seamlessly supports the JSON media type and utilizes UTF-8 character encoding for efficient and standardized data representation.
+
+## Base URL
+
+The base URL for all the API endpoints is `https://api.pdfless.com/v1`
+
+For example
+
+- `https://api.pdfless.com/v1/pdfs`
+- `https://api.pdfless.com/v1/workspaces`
+- `https://api.pdfless.com/v1/document-templates`
+    
+
+## Definitions
+
+### Workspace
+
+Workspace contains templates. Each workspace has access to their own templates and their unique API key.
+
+### Payload
+
+Payload is the data you want to send to API to generate document with dynamic data. Payload is a stringified JSON that will be used by document template during generation from semantic expressions `{{my_property.sub_property}}`. The separator between depth levels is `.`.
+
+<Tabs>
+<Tab title="JavaScript" id="cb-0-javascript">
+
+```javascript
+{
+    "company": "My Company name",
+    "address": "Company address",
+    "items": [
+        {
+            "id": 1,
+            "name": "Item one"
+        },
+        {
+            "id": 2,
+            "name": "Item two"
+        }
+    ]
+}
+
+```
+
+</Tab>
+<Tab title="Python" id="cb-0-python">
+
+```python
+{
+    "company": "My Company name",
+    "address": "Company address",
+    "items": [
+        {
+            "id": 1,
+            "name": "Item one"
+        },
+        {
+            "id": 2,
+            "name": "Item two"
+        }
+    ]
+}
+
+```
+
+</Tab>
+<Tab title="Java" id="cb-0-java">
+
+```java
+{
+    "company": "My Company name",
+    "address": "Company address",
+    "items": [
+        {
+            "id": 1,
+            "name": "Item one"
+        },
+        {
+            "id": 2,
+            "name": "Item two"
+        }
+    ]
+}
+
+```
+
+</Tab>
+<Tab title="cURL" id="cb-0-curl">
+
+```curl
+{
+    "company": "My Company name",
+    "address": "Company address",
+    "items": [
+        {
+            "id": 1,
+            "name": "Item one"
+        },
+        {
+            "id": 2,
+            "name": "Item two"
+        }
+    ]
+}
+
+```
+
+</Tab>
+<Tab title="Shell" id="cb-0-bash">
+
+```bash
+{
+    "company": "My Company name",
+    "address": "Company address",
+    "items": [
+        {
+            "id": 1,
+            "name": "Item one"
+        },
+        {
+            "id": 2,
+            "name": "Item two"
+        }
+    ]
+}
+
+```
+
+</Tab>
+</Tabs>
+---
+
+# Authentication
+
+The Pdfless API uses **API Key** to authenticate all API requests. These tokens offer a method to establish secure server-to-server authentication.  
+When authenticating to the Pdfless API, **API Key** can be set into header or in the query parameter of the request.
+
+<Tabs>
+<Tab title="JavaScript" id="cb-1-javascript">
+
+```javascript
+curl https://api.pdfless.com/v1/pdfs \
+  -H "apikey: <api_key>"
+
+```
+
+</Tab>
+<Tab title="Python" id="cb-1-python">
+
+```python
+curl https://api.pdfless.com/v1/pdfs \
+  -H "apikey: <api_key>"
+
+```
+
+</Tab>
+<Tab title="Java" id="cb-1-java">
+
+```java
+curl https://api.pdfless.com/v1/pdfs \
+  -H "apikey: <api_key>"
+
+```
+
+</Tab>
+<Tab title="cURL" id="cb-1-curl">
+
+```curl
+curl https://api.pdfless.com/v1/pdfs \
+  -H "apikey: <api_key>"
+
+```
+
+</Tab>
+<Tab title="Shell" id="cb-1-bash">
+
+```bash
+curl https://api.pdfless.com/v1/pdfs \
+  -H "apikey: <api_key>"
+
+```
+
+</Tab>
+</Tabs>
+<Tabs>
+<Tab title="JavaScript" id="cb-2-javascript">
+
+```javascript
+curl https://api.pdfless.com/v1/pdfs?apikey=<api_key>
+
+```
+
+</Tab>
+<Tab title="Python" id="cb-2-python">
+
+```python
+curl https://api.pdfless.com/v1/pdfs?apikey=<api_key>
+
+```
+
+</Tab>
+<Tab title="Java" id="cb-2-java">
+
+```java
+curl https://api.pdfless.com/v1/pdfs?apikey=<api_key>
+
+```
+
+</Tab>
+<Tab title="cURL" id="cb-2-curl">
+
+```curl
+curl https://api.pdfless.com/v1/pdfs?apikey=<api_key>
+
+```
+
+</Tab>
+<Tab title="Shell" id="cb-2-bash">
+
+```bash
+curl https://api.pdfless.com/v1/pdfs?apikey=<api_key>
+
+```
+
+</Tab>
+</Tabs>
+---
+
+# Libraries and SDKs
+
+## Client Libraries
+
+- [dotnet Client](https://github.com/Pdfless/pdfless-dotnet)
+- [Javascript Client](https://github.com/Pdfless/pdfless-js)
+    
+
+We have validated the generated libraries, but let us know if you find any anomalies in the client code.
+
+---
+
+Contact Support:  
+Name: Support  
+Email: [contact@pdfless.com](https://mailto:contact@pdfless.com)

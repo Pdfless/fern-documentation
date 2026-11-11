@@ -1,0 +1,47 @@
+# yaml-language-server: $schema=https://schema.buildwithfern.dev/docs-yml.json
+
+instances:
+  - url: pdfless.docs.buildwithfern.com
+title: Pdfless | Documentation
+layout:
+  searchbar-placement: sidebar
+  page-width: full
+navigation:
+  - api: Pdfless API
+    flattened: false
+    layout:
+      - page: Introduction
+        path: docs/pages/introduction.mdx
+colors:
+  accent-primary:
+    light: "#0F172A"
+    dark: "#0F172A"
+  background:
+    light: "#F8F8F9"
+    dark: "#010102"
+  card-background:
+    dark: "#1a1a1c"
+    light: "#FFFFFF"
+  border:
+    light: "#C9CACB"
+    dark: "#262728"
+theme:
+  page-actions: toolbar
+  footer-nav: minimal
+  body: canvas
+  tabs: bubble
+  sidebar: minimal
+logo:
+  dark: docs/assets/logo-dark.png
+  light: docs/assets/logo-light.png
+  height: 20
+  href: https://buildwithfern.com
+favicon: docs/assets/favicon.png
+css:
+  - styles.css
+  - docs/assets/onboarding-theme.css
+typography:
+  headingsFont:
+    name: Inter
+  bodyFont:
+    name: Inter

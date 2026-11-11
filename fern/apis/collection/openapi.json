@@ -1,0 +1,155 @@
+{
+  "info": {
+    "title": "Pdfless API",
+    "version": "1.0.0",
+    "description": "# Introduction\n\nThe Pdfless API simplifies the generation of transactional PDF documents, significantly reducing development and support costs. It empowers users to effortlessly create and manage their document templates using the robust capabilities of the web through HTML and CSS.\n\nThe Pdfless API adopts a REST architecture, providing the flexibility to code in your preferred programming language. It seamlessly supports the JSON media type and utilizes UTF-8 character encoding for efficient and standardized data representation.\n\n## Base URL\n\nThe base URL for all the API endpoints is `https://api.pdfless.com/v1`\n\nFor example\n\n- `https://api.pdfless.com/v1/pdfs`\n- `https://api.pdfless.com/v1/workspaces`\n- `https://api.pdfless.com/v1/document-templates`\n    \n\n## Definitions\n\n### Workspace\n\nWorkspace contains templates. Each workspace has access to their own templates and their unique API key.\n\n### Payload\n\nPayload is the data you want to send to API to generate document with dynamic data. Payload is a stringified JSON that will be used by document template during generation from semantic expressions `{{my_property.sub_property}}`. The separator between depth levels is `.`.\n\n```\n{\n    \"company\": \"My Company name\",\n    \"address\": \"Company address\",\n    \"items\": [\n        {\n            \"id\": 1,\n            \"name\": \"Item one\"\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Item two\"\n        }\n    ]\n}\n\n ```\n\n---\n\n# Authentication\n\nThe Pdfless API uses **API Key** to authenticate all API requests. These tokens offer a method to establish secure server-to-server authentication.  \nWhen authenticating to the Pdfless API, **API Key** can be set into header or in the query parameter of the request.\n\n```\ncurl https://api.pdfless.com/v1/pdfs \\\n  -H \"apikey: <api_key>\"\n\n ```\n\n```\ncurl https://api.pdfless.com/v1/pdfs?apikey=<api_key>\n\n ```\n\n---\n\n# Libraries and SDKs\n\n## Client Libraries\n\n- [dotnet Client](https://github.com/Pdfless/pdfless-dotnet)\n- [Javascript Client](https://github.com/Pdfless/pdfless-js)\n    \n\nWe have validated the generated libraries, but let us know if you find any anomalies in the client code.\n\n---\n\nContact Support:  \nName: Support  \nEmail: [contact@pdfless.com](https://mailto:contact@pdfless.com)"
+  },
+  "tags": [
+    {
+      "name": "PDFs"
+    },
+    {
+      "name": "Document templates"
+    },
+    {
+      "name": "Workspaces"
+    }
+  ],
+  "paths": {
+    "/v1/pdfs": {
+      "post": {
+        "tags": [
+          "PDFs"
+        ],
+        "summary": "Generate PDF",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "operationId": "postV1Pdfs",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "required": [
+                  "reference_id",
+                  "template_id",
+                  "payload"
+                ],
+                "properties": {
+                  "payload": {
+                    "type": "object",
+                    "required": [
+                      "company",
+                      "addressLine1",
+                      "city",
+                      "zipCode",
+                      "country"
+                    ],
+                    "properties": {
+                      "city": {
+                        "type": "string"
+                      },
+                      "company": {
+                        "type": "string"
+                      },
+                      "country": {
+                        "type": "string"
+                      },
+                      "zipCode": {
+                        "type": "string"
+                      },
+                      "addressLine1": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "template_id": {
+                    "type": "string",
+                    "format": "uuid"
+                  },
+                  "reference_id": {
+                    "type": "string"
+                  }
+                }
+              },
+              "example": {
+                "payload": {
+                  "city": "Paris",
+                  "company": "Company & co",
+                  "country": "France",
+                  "zipCode": "75001",
+                  "addressLine1": "192 allée de la République"
+                },
+                "template_id": "e089cd08-3222-4f2b-882a-03a0c64ea261",
+                "reference_id": "My Reference ID"
+              }
+            }
+          }
+        },
+        "x-fern-sdk-group-name": [
+          "PDFs"
+        ],
+        "x-fern-sdk-method-name": "Generate PDF"
+      }
+    },
+    "/v1/workspaces": {
+      "get": {
+        "tags": [
+          "Workspaces"
+        ],
+        "summary": "Get workspace info",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "operationId": "getV1Workspaces",
+        "x-fern-sdk-group-name": [
+          "Workspaces"
+        ],
+        "x-fern-sdk-method-name": "Get workspace info"
+      }
+    },
+    "/v1/document-templates": {
+      "get": {
+        "tags": [
+          "Document templates"
+        ],
+        "summary": "List document templates",
+        "responses": {
+          "200": {
+            "description": "Successful response"
+          }
+        },
+        "operationId": "getV1Document-templates",
+        "x-fern-sdk-group-name": [
+          "Document templates"
+        ],
+        "x-fern-sdk-method-name": "List document templates"
+      }
+    }
+  },
+  "openapi": "3.1.0",
+  "servers": [
+    {
+      "url": "https://api.pdfless.com"
+    }
+  ],
+  "security": [
+    {
+      "apiKeyAuth": []
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "apiKeyAuth": {
+        "in": "header",
+        "name": "apikey",
+        "type": "apiKey"
+      }
+    }
+  }
+}
