@@ -2,6 +2,7 @@
 
 instances:
   - url: pdfless.docs.buildwithfern.com
+    custom-domain: developer.pdfless.com
 title: Pdfless | Documentation
 layout:
   searchbar-placement: sidebar
